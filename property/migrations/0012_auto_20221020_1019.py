@@ -5,7 +5,7 @@ import phonenumbers
 
 
 def fill_owner_pure_phone(apps, _):
-    for flat in apps.get_model('property', 'Flat').objects.all():
+    for flat in apps.get_model('property', 'Flat').objects.all().iterator():
         try:
             parsed_phonenumber = phonenumbers.parse(flat.owners_phonenumber)
         except phonenumbers.phonenumberutil.NumberParseException:

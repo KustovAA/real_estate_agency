@@ -4,7 +4,7 @@ from django.db import migrations
 
 
 def fill_owners_data(apps, _):
-    for flat in apps.get_model('property', 'Flat').objects.all():
+    for flat in apps.get_model('property', 'Flat').objects.all().iterator():
         owner, created = apps.get_model('property', 'Owner').objects.get_or_create(
             owner=flat.owner,
             owners_phonenumber=flat.owners_phonenumber,
